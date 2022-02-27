@@ -7,11 +7,15 @@
 
 import Foundation
 
-class HTTPClient {
-    
-    enum NetworkError: Error {
-        case unexpectedResponse
-    }
+protocol NetworkRequester {
+    func makeNetworkRequest(with request: URLRequest, completion: @escaping (Result<Data, NetworkError>) -> Void)
+}
+
+enum NetworkError: Error {
+    case unexpectedResponse
+}
+
+class HTTPClient: NetworkRequester {
     
     let session: URLSession = URLSession(configuration: URLSessionConfiguration.default)
     

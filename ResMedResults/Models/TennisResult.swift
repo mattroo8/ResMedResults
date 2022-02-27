@@ -20,7 +20,7 @@ class TennisResult: SportResult {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DecodingKeys.self)
         numberOfSets = try container.decode(Int.self, forKey: .numberOfSets)
-        looser = try container.decode(String.self, forKey: .looser)
+        looser = try container.decode(String.self, forKey: .looser).trimmingCharacters(in: .whitespacesAndNewlines)
         try super.init(from: decoder)
     }
     

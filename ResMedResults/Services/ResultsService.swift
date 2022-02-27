@@ -9,9 +9,9 @@ import Foundation
 
 class ResultsService {
     
-    let httpClient: HTTPClient
+    let httpClient: NetworkRequester
     
-    init(_ client: HTTPClient = HTTPClient()) {
+    init(_ client: NetworkRequester = HTTPClient()) {
         self.httpClient = client
     }
     

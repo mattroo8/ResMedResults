@@ -22,8 +22,8 @@ class NBAResult: SportResult {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DecodingKeys.self)
         gameNumber = try container.decode(Int.self, forKey: .gameNumber)
-        looser = try container.decode(String.self, forKey: .looser)
-        mvp = try container.decode(String.self, forKey: .mvp)
+        looser = try container.decode(String.self, forKey: .looser).trimmingCharacters(in: .whitespacesAndNewlines)
+        mvp = try container.decode(String.self, forKey: .mvp).trimmingCharacters(in: .whitespacesAndNewlines)
         try super.init(from: decoder)
     }
     

@@ -21,8 +21,8 @@ class SportResult: Decodable {
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: DecodingKeys.self)
         publicationDate = try container.decode(Date.self, forKey: .publicationDate)
-        tournament = try container.decode(String.self, forKey: .tournament)
-        winner = try container.decode(String.self, forKey: .winner)
+        tournament = try container.decode(String.self, forKey: .tournament).trimmingCharacters(in: .whitespacesAndNewlines)
+        winner = try container.decode(String.self, forKey: .winner).trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
     func titleText() -> String {
